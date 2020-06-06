@@ -5,7 +5,10 @@ import router from "./router";
 
 //importing boostrap
 import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
+import "@/assets/css/bootstrap.min.css";
+import "@/assets/css/main.css";
+import "@/assets/css/carousel.css";
 
 Vue.config.productionTip = false;
 
