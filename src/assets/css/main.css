@@ -1,7 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 0.95rem;
-    padding-bottom: 0rem;
+    padding-bottom: 0rem !important;
     padding-top: 0rem;
     font-weight: 300;
     color: #282828;

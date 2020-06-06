@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div >
         <Header />
         <router-view />
+        <Misc />
+        <Footer />
     </div>
   
 </template>
@@ -11,6 +13,8 @@
 <script lang="ts">
 
 import Header from "../components/Header.vue";
+import Misc from "../components/Misc.vue";
+import Footer from "../components/Footer.vue";
 
 import {Vue, Component, Prop}  from 'vue-property-decorator';
 //import  Header from '@/components/Header';
@@ -18,7 +22,9 @@ import {Vue, Component, Prop}  from 'vue-property-decorator';
 
 @Component({
     components: {
-        Header
+        Header,
+        Footer,
+        Misc
     }
 })
 export default class Default extends Vue{
