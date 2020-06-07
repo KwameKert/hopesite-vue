@@ -34,10 +34,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home</a>
+          <router-link to="/" class="nav-link">home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about">About us</a>
+          <router-link to="/about" class="nav-link">about</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Events</a>

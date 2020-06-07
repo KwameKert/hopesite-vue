@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <section class="bg-footer">
+   
+
+ <section class="bg-footer">
             
     <div class="container  pt-5">
         <div class="row pb-3 ">
@@ -46,20 +47,14 @@
         
     </div>
 
-    
-    
-    
-
-
-
 
 </section>
-    </div>
+  
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator';
-export default class Footer extends  Vue{
+import Vue from 'vue'
+export default Vue.extend({
     
-}
+})
 </script>
