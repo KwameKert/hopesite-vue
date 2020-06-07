@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Default from "../layouts/Default.vue";
 import About from "../views/About.vue";
+import Department from "@/views/Department.vue";
 
 Vue.use(VueRouter);
 
@@ -12,7 +13,8 @@ const routes: Array<RouteConfig> = [
     component: Default,
     children: [
       {path: '/', component:Home},
-      {path: '/about', component:About}
+      {path: '/about', component:About},
+      {path: '/department', component: Department}
 ]
   }
   // {
