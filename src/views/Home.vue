@@ -54,18 +54,26 @@
 
                     <div class="col-md-4 verse order-first order-md-last">
                         <div class="serv_begin p-2">
-                            <!-- <span class="timer-container">Next Service Begins:<span class="timer">02:00:30</span></span> -->
-                            <span class="timer-container">Next Event In:<span class="timer">
-                              <!-- {{timeString}} -->
-                              </span></span>
+                        <span class="timer-container" v-if="!nextEvent">No new event available</span>
+                        <span class="timer-container" v-else>Next Service Begins:<span class="timer">{{nextEvent}}</span></span>
+
                         </div>
                         <span class="quote clearfix"><i class="fa fa-quote-right pull-right"></i></span>
                         <h5>
                           Verse of the week
                           </h5>
-                        <p class="text-justify">
-                          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-                          </p>
+                        
+                         <vue-content-loading  v-if="!verseOfWeek">
+      <rect x="10" y="10" rx="4" ry="4" width="400" height="15"  speed="1"/>
+      <rect x="10" y="40" rx="5" ry="5" width="300" height="15"  speed="1"/>
+      <rect x="10" y="80" rx="5" ry="5" width="250" height="15"  speed="1"/>
+      <rect x="200" y="120" rx="5" ry="5" width="200" height="10"  speed="1"/>
+      
+    </vue-content-loading>
+                  <p class="text-justify" v-else v-html="verseOfWeek.content">
+                    
+                  </p>
+                  <p class="text-bold text-right"> - {{verseOfWeek.title}}</p>
                     </div>
                 </div><!-- /.row -->
                 </div>
@@ -143,12 +151,58 @@
 <script >
 // @ is an alias to /src
 //import HelloWorld from "@/components/HelloWorld.vue";
+import api from '../services/api'
+import moment from 'moment';
+import VueContentLoading from 'vue-content-loading';
 
+import { Skeleton } from 'vue-loading-skeleton';
 export default {
   name: "Home",
-  components: {
-    //Sidebar 
-  
+   components: {
+        VueContentLoading,
+      },
+  data(){
+    return {
+      nextEvent: null,
+      verseOfWeek: null
+    }
+  },
+  methods: {
+    fetchData(){
+      api.get('/site/homepage').then((response)=>{
+        const data = response.data.data;
+        if(data){
+          this.verseOfWeek = data.verseOfWeek
+          if(data.nextEvent){
+            const date1 = new Date();
+            const date2 = new Date(data.nextEvent.endDate);
+            const diffTime = date2 - date1;
+            const diffHours = Math.ceil(diffTime / (1000 * 60 * 60)); 
+            const diffMinutes = Math.ceil(diffTime / (1000 * 60 )); 
+            console.log("diff minutes",diffMinutes)
+           if(diffHours<24 && diffMinutes > 1){
+               this.startCountDown(diffTime)
+           }else{
+             this.nextEvent = moment(data.nextEvent.endDate).format("DD-MM-YYYY");
+
+          }
+          }
+        }
+      })
+    },
+    startCountDown(endDate){
+        let secondsLeft = endDate
+            setInterval(()=>{
+             const date = new Date(secondsLeft);
+             this.nextEvent =moment(date).format("h:mm:ss");  
+             secondsLeft = secondsLeft -1000;
+            },1000)
+    },
+     
+  },
+
+  mounted(){
+    this.fetchData()
   }
 };
 </script>
