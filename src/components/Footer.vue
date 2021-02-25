@@ -37,17 +37,13 @@
         
         <hr>
         
-        <div class="row ">
-             
+        <div class="row ">     
             <div class="col-md-12">
-                <p class="text-center">©2019 Hope Media</p>
+                <p class="text-center">©2021 Hope Media</p>
             </div>
         </div>
         
-        
     </div>
-
-
 </section>
   
 </template>

@@ -69,18 +69,18 @@
                   <a class="dropdown-item" href="#">Children's Ministry</a>
                 </div>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Store</a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link prayer-request" href="#">Contact</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Give</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link prayer-request" href="#">Prayer Request</a>
-              </li>
+              </li> -->
+              <!-- <li class="nav-item">
+                <a class="nav-link " href="#">Prayer Request</a>
+              </li> -->
             </ul>
           </div>
         </div>
