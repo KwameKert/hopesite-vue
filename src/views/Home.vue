@@ -242,7 +242,7 @@ export default {
     return {
       nextEvent: null,
       verseOfWeek: null,
-      upComingEvents: [],
+      upComingEvents: null,
     };
   },
   methods: {
